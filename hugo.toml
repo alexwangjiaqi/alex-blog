@@ -1,3 +1,37 @@
-baseURL = 'https://example.org/'
-locale = 'en-us'
-title = 'My New Hugo Project'
+baseURL = 'https://example.com/'
+languageCode = 'en-gb'
+title = 'Alexander Wang'
+disableKinds = ['RSS']
+
+[taxonomies]
+  tag = 'tags'
+  personal_tag = 'personal_tags'
+
+[params]
+  description = 'A personal technical blog—notes on maths, computing, and related topics.'
+  wordmark = 'alexanderwang'
+  # Font preset: see data/site_fonts.yaml — libre-franklin | public-sans | noto-sans | source-sans-3 | ibm-plex | fira-sans | work-sans | instrument-sans | newsreader | literata | atkinson
+  site_font = 'libre-franklin'
+
+[params.tag_nav]
+  tags = ['Statistical Modeling', 'Machine Learning', 'Finance', 'Projects', 'Misc']
+
+[params.personal_tag_nav]
+  tags = ['Travel', 'Notes', 'Life', 'Reading', 'Misc']
+
+[params.math]
+  renderer = 'katex'
+
+[permalinks]
+  blog = '/blog/:year/:month/:day/:slug/'
+  personal = '/personal/:year/:month/:day/:slug/'
+  personal_tags = '/personal/topic/:slug/'
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[markup.goldmark.extensions.passthrough]
+  enable = true
+  [markup.goldmark.extensions.passthrough.delimiters]
+    block = [['$$', '$$'], ['\[', '\]']]
+    inline = [['$', '$'], ['\(', '\)']]

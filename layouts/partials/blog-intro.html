@@ -1,0 +1,8 @@
+{{- /* Same blurb as /blog/ — use on tag pages so they match the blog landing feel. */ -}}
+{{- with site.GetPage "/blog" }}
+  {{- with .Content }}
+  <div id="intro">
+    {{ . }}
+  </div>
+  {{- end }}
+{{- end }}

@@ -1,0 +1,12 @@
+{{- $key := site.Params.site_font | default "libre-franklin" -}}
+{{- $table := hugo.Data.site_fonts -}}
+{{- $cfg := index $table $key -}}
+{{- if not $cfg -}}
+  {{- $cfg = index $table "libre-franklin" -}}
+{{- end -}}
+<link href="{{ $cfg.href }}" rel="stylesheet">
+<style>
+  :root {
+    --font-sans-primary: {{ printf "%q" $cfg.family | safeCSS }};
+  }
+</style>

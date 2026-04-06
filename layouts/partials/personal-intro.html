@@ -1,0 +1,8 @@
+{{- /* Same blurb as /personal/ for topic pages. */ -}}
+{{- with site.GetPage "/personal" }}
+  {{- with .Content }}
+  <div id="intro">
+    {{ . }}
+  </div>
+  {{- end }}
+{{- end }}

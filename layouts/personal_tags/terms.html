@@ -1,0 +1,11 @@
+{{ define "main" }}
+<section class="tag-page section-list terms-all-page" aria-label="Personal topics">
+  {{- partial "personal-intro.html" . }}
+  {{- partial "personal-tag-nav.html" (dict "current" "") }}
+  <ul class="terms-all">
+    {{- range .Pages.ByTitle }}
+    <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+    {{- end }}
+  </ul>
+</section>
+{{ end }}

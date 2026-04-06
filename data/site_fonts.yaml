@@ -1,0 +1,45 @@
+# Keys used by params.site_font in hugo.toml (href + CSS font-family name).
+ibm-plex:
+  family: "IBM Plex Sans"
+  href: "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap"
+
+source-sans-3:
+  family: "Source Sans 3"
+  href: "https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap"
+
+# Classic neo-grotesque / editorial sans — readable, serious, not “startup geometric”.
+libre-franklin:
+  family: "Libre Franklin"
+  href: "https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap"
+
+public-sans:
+  family: "Public Sans"
+  href: "https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap"
+
+noto-sans:
+  family: "Noto Sans"
+  href: "https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap"
+
+fira-sans:
+  family: "Fira Sans"
+  href: "https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap"
+
+work-sans:
+  family: "Work Sans"
+  href: "https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap"
+
+instrument-sans:
+  family: "Instrument Sans"
+  href: "https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap"
+
+newsreader:
+  family: "Newsreader"
+  href: "https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap"
+
+literata:
+  family: "Literata"
+  href: "https://fonts.googleapis.com/css2?family=Literata:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap"
+
+atkinson:
+  family: "Atkinson Hyperlegible"
+  href: "https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap"

@@ -1,0 +1,20 @@
+{{ define "main" }}
+<article itemscope itemtype="https://schema.org/BlogPosting">
+  <header class="front-matter">
+    <h1 itemprop="headline">{{ .Title }}</h1>
+    {{- with .Params.subtitle }}
+    <p class="subtitle" itemprop="description">{{ . }}</p>
+    {{- end }}
+    <div class="bylines">
+      <div class="byline">
+        <h3>Published</h3>
+        <p><time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}" itemprop="datePublished">{{ .Date.Format "2 January 2006" }}</time></p>
+      </div>
+    </div>
+    <div class="clear"></div>
+  </header>
+  <div class="article" itemprop="articleBody">
+    {{ .Content }}
+  </div>
+</article>
+{{ end }}

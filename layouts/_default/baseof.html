@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="{{ site.Language.Lang | default "en" }}">
+<head>
+  {{- partial "head.html" . }}
+</head>
+<body>
+  <div class="wrap">
+    {{- if not .IsHome }}
+    <header class="site-header">
+      {{- partial "nav.html" . }}
+    </header>
+    {{- end }}
+    <div class="content">
+      <main id="main">
+        {{- block "main" . }}{{ end -}}
+      </main>
+    </div>
+  </div>
+  {{- partial "math.html" (dict "Page" . "slot" "footer") }}
+</body>
+</html>

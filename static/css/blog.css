@@ -1,0 +1,782 @@
+/*
+ * Based on https://gregorygundersen.com/css/blog.css (typography + layout parity).
+ * Extensions: Hugo/Chroma code, KaTeX display spacing, article subtitle / section list.
+ */
+
+html {
+  font-family: var(--font-sans-primary, "Libre Franklin"), -apple-system, BlinkMacSystemFont,
+    "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: rgba(0, 0, 0, 0.8);
+  line-height: 1.5em;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+body .content {
+  margin-bottom: 120px;
+}
+
+/* Links: understated — underline by default; hover lightens and drops underline (live site). */
+a {
+  color: rgba(0, 0, 0, 0.8);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1px;
+}
+
+a:hover {
+  color: rgba(0, 0, 0, 0.5);
+  text-decoration: none;
+}
+
+h1 {
+  line-height: 1.2em;
+}
+
+.clear {
+  clear: both;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Narrow reading measure — matches Gregory’s .wrap */
+.wrap {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 12px;
+}
+
+.mono {
+  font-family: monospace;
+}
+
+.site-header {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding-bottom: 14px;
+  margin-bottom: 0;
+}
+
+.site-header .nav {
+  margin-top: 18px;
+  margin-bottom: 0;
+}
+
+.nav {
+  margin-top: 18px;
+  margin-bottom: 18px;
+  line-height: 1.45;
+}
+
+.nav a {
+  color: rgba(0, 0, 0, 0.6);
+  text-decoration: none;
+  border-bottom: none;
+  font-size: 14px;
+}
+
+.nav a:hover {
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.nav a.nav-current {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1px;
+  font-weight: 700;
+}
+
+.nav a.nav-current:hover {
+  text-decoration: underline;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: flex-start;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav ul li {
+  display: block;
+}
+
+/* Logo left; Blog / Personal / About Me cluster on the right */
+.nav ul li.nav-logo {
+  margin-right: auto;
+}
+
+/* Space only between Blog / Personal / About Me */
+.nav ul li.nav-logo ~ li {
+  margin-left: 1.6rem;
+}
+
+.nav ul li.nav-logo + li {
+  margin-left: 0;
+}
+
+/* Logo wordmark: heavier weight + lowercase — base font from html */
+.wordmark {
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: lowercase;
+}
+
+.nav a.site-logo {
+  font-size: 18px;
+  color: rgba(0, 0, 0, 0.88);
+}
+
+.nav a.site-logo:hover {
+  color: rgba(0, 0, 0, 0.55);
+}
+
+/* Home: minimal (no header on this page) */
+.home {
+  margin-top: clamp(6rem, 22vh, 14rem);
+  margin-bottom: 100px;
+}
+
+.home-name {
+  font-size: 2rem;
+  line-height: 1.15;
+  margin: 0 0 0.85rem;
+}
+
+/* About Me page (no published date) */
+.about-header {
+  padding: 0 0 1.25rem;
+  margin: 0 0 0.35rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.about-header h1 {
+  margin: 0;
+  font-size: 1.85rem;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+.about-tagline {
+  font-size: 1.0625rem;
+  line-height: 1.55;
+  margin: 0.65rem 0 0;
+  color: rgba(0, 0, 0, 0.72);
+}
+
+.about-page {
+  margin-top: 80px;
+  margin-bottom: 100px;
+}
+
+.about-body {
+  margin-top: 2rem;
+}
+
+.home-sections ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.home-sections li {
+  margin: 0 0 0.35rem;
+}
+
+.home-sections li:last-child {
+  margin-bottom: 0;
+}
+
+/* Home page links: underlined like body links */
+.home-sections a {
+  font-size: 1.0625rem;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.8);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1px;
+}
+
+.home-sections a:hover {
+  color: rgba(0, 0, 0, 0.5);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.home-email {
+  margin: 0.65rem 0 0;
+  padding: 0;
+  font-size: 1rem;
+  line-height: 1.45;
+}
+
+.home-email a {
+  font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, "Liberation Mono",
+    "Courier New", monospace;
+  font-size: inherit;
+  color: rgba(0, 0, 0, 0.72);
+  text-decoration: none;
+}
+
+.home-email a:hover {
+  color: rgba(0, 0, 0, 0.5);
+  text-decoration: none;
+}
+
+/* Article title block */
+.front-matter {
+  padding: 24px 0 22px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.front-matter h1 {
+  margin: 0;
+  font-size: 1.85rem;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+.front-matter .subtitle {
+  font-size: 1.0625rem;
+  line-height: 1.55;
+  margin: 0.65rem 0 0;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.72);
+}
+
+.front-matter .bylines .byline {
+  margin-right: 20px;
+  float: left;
+}
+
+.front-matter .bylines .byline h3,
+.front-matter .bylines .byline p {
+  margin: 0;
+}
+
+.front-matter .bylines .byline h3 {
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.front-matter .bylines .byline p {
+  font-size: 10px;
+  line-height: 1.6em;
+}
+
+.front-matter-image {
+  background-size: 100%;
+}
+
+.front-matter-image img {
+  width: 100%;
+}
+
+.front-matter-image .bylines .byline {
+  margin-right: 20px;
+  float: left;
+}
+
+.front-matter-image .bylines .byline h3,
+.front-matter-image .bylines .byline p {
+  margin: 0;
+}
+
+.front-matter-image .bylines .byline h3 {
+  font-size: 9px;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.front-matter-image .bylines .byline p {
+  font-size: 10px;
+  line-height: 1.6em;
+}
+
+.img-left {
+  float: left;
+  width: 49%;
+}
+
+.img-right {
+  float: right;
+  width: 49%;
+}
+
+table {
+  font-size: 14px;
+  margin: 0 auto;
+  border-collapse: collapse;
+  border-top: 2px solid black;
+  border-bottom: 1px solid black;
+}
+
+table thead > tr > th {
+  border-bottom: 1px solid black;
+  padding: 0 8px;
+}
+
+table td {
+  text-align: center;
+}
+
+.tag-page h1 span {
+  font-size: 14px;
+}
+
+/* Body text — generous vertical rhythm */
+.article {
+  font-size: 15px;
+  line-height: 1.65;
+  color: rgba(0, 0, 0, 0.8);
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.article p {
+  margin: 0 0 1.05em;
+}
+
+.article p:last-child {
+  margin-bottom: 0;
+}
+
+.article img {
+  max-width: 100%;
+  height: auto;
+}
+
+.article blockquote {
+  margin: 1.25rem 0;
+  padding: 0 1em;
+  color: #777;
+  border-left: 0.25em solid #ddd;
+}
+
+.article h2 {
+  font-size: 26px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  padding-bottom: 1rem;
+  padding-top: 1em;
+  margin: 2.2rem 0 0.75rem;
+}
+
+.article h2:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.article h3 {
+  font-size: 1.2rem;
+  margin: 1.75rem 0 0.55rem;
+  line-height: 1.35;
+}
+
+.article h4 {
+  font-size: 1.05rem;
+  margin: 1.5rem 0 0.45rem;
+}
+
+.article h5,
+.article h6 {
+  font-size: 15px;
+  margin: 1.35rem 0 0.4rem;
+}
+
+.article .figure-no-caption {
+  margin-bottom: 40px;
+  margin-top: 40px;
+}
+
+.article .figure-no-caption .caption {
+  padding-top: 15px;
+  color: rgba(0, 0, 0, 0.8);
+  display: inline-block;
+  font-size: 12px;
+  line-height: 1.2em;
+}
+
+.article .figure {
+  border-top: 1px solid hsla(0, 0%, 0%, 0.2);
+  border-bottom: 1px solid hsla(0, 0%, 0%, 0.2);
+  padding: 20px 0;
+  margin: 2.25rem 0;
+}
+
+.article .figure .caption {
+  padding-top: 15px;
+  display: inline-block;
+  font-size: 13px;
+  line-height: 1.2em;
+}
+
+.article .figure .caption-label {
+  font-weight: bold;
+}
+
+.article .footnote {
+  line-height: 0;
+}
+
+/* Jekyll / Rouge .highlight — Hugo often emits same class via Chroma */
+.article div.highlight {
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  font-size: 13px;
+  line-height: 1.35;
+  margin: 1.6rem 0;
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.article div.highlight pre {
+  margin: 0;
+  padding: 0.95rem 0;
+  overflow-x: auto;
+  background: transparent;
+  border: 0;
+  font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+.article pre {
+  margin: 1.6rem 0;
+  padding: 0.95rem 0;
+  overflow-x: auto;
+  font-size: 13px;
+  line-height: 1.35;
+  font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.article pre code {
+  font-size: inherit;
+  line-height: inherit;
+  font-family: inherit;
+  padding: 0;
+  background: none;
+  border: 0;
+}
+
+/* Inline code — quiet, not a “badge” */
+.article :not(pre) > code {
+  font-size: 0.88em;
+  font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+  background: rgba(0, 0, 0, 0.055);
+  padding: 0.12em 0.38em;
+  border-radius: 2px;
+}
+
+.article ul,
+.article ol {
+  padding: 0 0 0 1.1rem;
+  margin: 0 0 1.1em;
+}
+
+.article li {
+  margin: 0.35em 0;
+}
+
+.article li::marker {
+  color: rgba(0, 0, 0, 0.45);
+}
+
+.article hr {
+  border-bottom: none;
+  border-top: 1px solid rgba(0, 0, 0, 0.7);
+  margin: 33px auto;
+  width: 70px;
+}
+
+/* KaTeX: breathable display math */
+.article .katex-display {
+  margin: 2rem 0;
+  padding: 0.35rem 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.article p + .katex-display {
+  margin-top: 2.25rem;
+}
+
+.article .katex-display + p {
+  margin-top: 2.25rem;
+}
+
+#bibliography {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+#bibliography ol.bibliography {
+  padding-left: 15px;
+  padding-top: 30px;
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+#blog,
+.tag-page {
+  margin-top: 80px;
+  margin-bottom: 100px;
+}
+
+#blog #intro,
+.tag-page #intro {
+  font-size: 14px;
+  font-style: italic;
+  line-height: 1.45;
+  margin-bottom: 44px;
+  color: rgba(0, 0, 0, 0.78);
+}
+
+#blog .quote,
+.tag-page .quote {
+  margin-bottom: 30px;
+}
+
+#blog .quote p,
+.tag-page .quote p {
+  margin-bottom: 5px;
+}
+
+#blog .post-date,
+.tag-page .post-date {
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 12px;
+  font-weight: bold;
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+#blog .post-title,
+.tag-page .post-title {
+  display: inline-block;
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+#blog .post-title a,
+.tag-page .post-title a {
+  font-size: 18px;
+  text-decoration: none;
+}
+
+#blog .post-title a:hover,
+.tag-page .post-title a:hover {
+  text-decoration: underline;
+}
+
+#blog .post-subtitle,
+.tag-page .post-subtitle {
+  font-size: 14px;
+  margin-top: 0;
+  margin-bottom: 25px;
+  line-height: 1.5em;
+  color: rgba(0, 0, 0, 0.75);
+}
+
+#blog .year,
+.tag-page .year {
+  font-size: 18px;
+  position: relative;
+  right: 100px;
+  color: rgba(0, 0, 0, 0.5);
+  width: 100px;
+  margin-bottom: -24px;
+}
+
+#blog #y2017.year,
+.tag-page #y2017.year,
+#blog #y2018.year,
+.tag-page #y2018.year {
+  margin-top: 0px;
+}
+
+#blog ul#tag-nav,
+.tag-page ul#tag-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 1rem;
+  row-gap: 0.35rem;
+  list-style: none;
+  margin: 0;
+  padding: 0 0 30px 0;
+  line-height: 1.3em;
+}
+
+#blog ul#tag-nav li,
+.tag-page ul#tag-nav li {
+  display: block;
+  padding: 0;
+  margin: 0;
+}
+
+#blog ul#tag-nav li a,
+.tag-page ul#tag-nav li a {
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+ul#tag-nav li span.tag-current {
+  font-size: 14px;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.85);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1px;
+  display: inline;
+  padding: 0;
+}
+
+.post-title .post-from {
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.45);
+}
+
+.terms-all {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem;
+  line-height: 1.65;
+}
+
+.terms-all li {
+  margin: 0 0 0.4rem;
+}
+
+.terms-all a {
+  font-size: 15px;
+  font-weight: bold;
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.75);
+}
+
+.terms-all a:hover {
+  text-decoration: underline;
+}
+
+#blog #more,
+.tag-page #more {
+  font-size: 15px;
+  padding-top: 40px;
+}
+
+#blog #more a,
+.tag-page #more a {
+  font-weight: bold;
+}
+
+.tag-page h2 {
+  font-size: 26px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  padding-bottom: 1rem;
+  padding-top: 1em;
+}
+
+.footnotes {
+  margin-top: 100px;
+  font-size: 12px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.section-list {
+  margin-top: 80px;
+  margin-bottom: 100px;
+}
+
+.section-list .section-subtitle {
+  font-size: 15px;
+  line-height: 1.45;
+  color: rgba(0, 0, 0, 0.72);
+  margin: 0 0 1rem;
+}
+
+.section-list #intro {
+  font-size: 14px;
+  line-height: 1.45;
+  margin-bottom: 2rem;
+  color: rgba(0, 0, 0, 0.78);
+}
+
+.section-list .post-date {
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 12px;
+  font-weight: bold;
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+.section-list .post-title {
+  display: inline-block;
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+.section-list .post-title a {
+  font-size: 18px;
+  text-decoration: none;
+}
+
+.section-list .post-title a:hover {
+  text-decoration: underline;
+}
+
+.section-list .post-subtitle {
+  font-size: 14px;
+  margin-top: 0;
+  margin-bottom: 25px;
+  line-height: 1.5em;
+  color: rgba(0, 0, 0, 0.75);
+}
+
+hr {
+  border-top: #ccc;
+}
+
+@media screen and (max-width: 700px) {
+  body {
+    margin: 0 7px;
+  }
+
+  .wrap {
+    padding: 0 8px;
+  }
+
+  .front-matter-image {
+    display: none;
+  }
+
+  #blog .year,
+  .tag-page .year {
+    position: static;
+    width: auto;
+    margin-bottom: 0.35rem;
+    right: auto;
+  }
+}

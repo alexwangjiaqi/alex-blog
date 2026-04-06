@@ -1,0 +1,50 @@
+{{- /*
+  Site-wide math: KaTeX (default) or MathJax 3.
+  Usage:
+    In head: {{ partial "math.html" (dict "Page" . "slot" "head") }}
+    Before </body>: {{ partial "math.html" (dict "Page" . "slot" "footer") }}
+  Switch engine in hugo.toml: [params.math] renderer = "katex" | "mathjax"
+*/ -}}
+{{- $engine := lower (default "katex" site.Params.math.renderer) -}}
+{{- $slot := default "footer" .slot -}}
+
+{{- if eq $slot "head" -}}
+  {{- if eq $engine "mathjax" -}}
+    {{- /* MathJax 3 TeX-CHTML bundles fonts; no extra stylesheet required */ -}}
+  {{- else -}}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" crossorigin="anonymous">
+  {{- end -}}
+{{- else -}}
+  {{- if eq $engine "mathjax" -}}
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['\\(', '\\)'], ['$', '$']],
+    displayMath: [['$$', '$$'], ['\\[', '\\]']],
+    processEscapes: true,
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+  },
+};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js"></script>
+  {{- else -}}
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  if (typeof renderMathInElement !== 'function') return;
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: '$$', right: '$$', display: true},
+      {left: '\\[', right: '\\]', display: true},
+      {left: '$', right: '$', display: false},
+      {left: '\\(', right: '\\)', display: false},
+    ],
+    ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+  });
+});
+</script>
+  {{- end -}}
+{{- end -}}

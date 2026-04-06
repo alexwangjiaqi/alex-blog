@@ -1,0 +1,11 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+{{- partial "site-font.html" . }}
+<title>{{ if .IsHome }}{{ .Site.Title }}{{ else if .Title }}{{ .Title }} — {{ .Site.Title }}{{ else }}{{ .Site.Title }}{{ end }}</title>
+{{- with .Params.keywords }}
+<meta name="keywords" content="{{ . }}">
+{{- end }}
+<link rel="stylesheet" href="{{ "css/blog.css" | relURL }}">
+{{- partial "math.html" (dict "Page" . "slot" "head") }}

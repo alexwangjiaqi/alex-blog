@@ -1,0 +1,13 @@
+{{ define "main" }}
+<article class="about-page">
+  <header class="about-header">
+    <h1>{{ .Title }}</h1>
+    {{- with .Params.subtitle }}
+    <p class="about-tagline">{{ . }}</p>
+    {{- end }}
+  </header>
+  <div class="article about-body">
+    {{ .Content }}
+  </div>
+</article>
+{{ end }}
