@@ -39,37 +39,51 @@ Before deploying, set **`baseURL`** in `hugo.toml` to your real domain (or hosti
 | **`hugo.toml`** | Site title, `baseURL`, taxonomies, permalinks, math (KaTeX), Goldmark (`unsafe` HTML, math passthrough), nav tag lists, **font preset** (`params.site_font`). |
 | **`content/`** | All Markdown pages and posts. |
 | **`layouts/`** | HTML templates: base layout, section lists, tag pages, partials (head, nav, math, intros). |
-| **`static/`** | Static assets copied verbatim; site CSS lives in `static/css/blog.css`. |
+| **`static/`** | Static assets copied verbatim; site CSS in `static/css/blog.css`; **global** images/PDFs in `static/img/` and `static/files/` (URLs `/img/...`, `/files/...`). |
+| **`notebooks/`** | Jupyter sources for reproducibility (`<slug>.ipynb` matches `content/blog/<slug>/` or `content/personal/<slug>/`). Not built by Hugo. |
 | **`data/site_fonts.yaml`** | Google Fonts URLs and family names for each `site_font` key. |
 | **`archetypes/`** | Front-matter templates for `hugo new`. |
-| **`.gitignore`** | Ignores `public/`, `resources/`, `.hugo_build.lock` (build output stays local). |
+| **`.gitignore`** | Ignores `public/`, `resources/`, `.hugo_build.lock`, Jupyter checkpoints, common Python/venv paths. |
 
-### `content/` in more detail
+### `content/` in more detail (page bundles)
+
+Posts are **[Hugo leaf bundles](https://gohugo.io/content-management/page-bundles/)**: one folder per slug, with `index.md` and any figures you want co-located.
 
 ```
 content/
-├── _index.md           # Home page front matter (body optional; home layout is custom)
+├── _index.md           # Home page front matter (home layout is custom)
 ├── about-me.md         # About page → /about-me/
 ├── blog/
 │   ├── _index.md       # Blog section landing
-│   └── *.md            # Posts → /blog/YYYY/MM/DD/slug/
+│   └── my-slug/        # Post → /blog/YYYY/MM/DD/my-slug/
+│       ├── index.md
+│       ├── plot.png    # optional; reference as ![alt](plot.png)
+│       └── diagram.svg
 └── personal/
     ├── _index.md       # Personal section landing
-    └── *.md            # Posts → /personal/YYYY/MM/DD/slug/
+    └── another-slug/
+        ├── index.md
+        └── photo.jpg
 ```
 
 - **Blog** posts use taxonomy **`tags`** (URLs under `/tags/...`).
 - **Personal** posts use **`personal_tags`** (URLs under `/personal/topic/.../`).
 
+**Global assets** (site-wide, not per post): put files in **`static/img/`** or **`static/files/`** and link as **`/img/...`** or **`/files/...`**.
+
+**Reproducibility:** add **`notebooks/<slug>.ipynb`** (same slug as the post folder). In the post front matter set **`notebook_url`** to the GitHub blob URL for that file; the single-post layout shows a “Notebook on GitHub” line above the article body.
+
 ---
 
 ## Adding a Blog post
 
-1. Create a file under **`content/blog/`** (or use the archetype):
+1. Create a **bundle** under **`content/blog/<slug>/`**:
 
    ```bash
-   hugo new content blog/my-post-title.md
+   hugo new content blog/my-post-title/index.md
    ```
+
+   Add figures in the same folder; reference them with a **relative** path in Markdown, e.g. `![](figure.png)`.
 
 2. Edit front matter. Important fields:
 
@@ -78,6 +92,8 @@ content/
    - **`tags`** — list of strings; should match labels you want under **Blog** topic navigation.
 
    Topic bars on list/tag pages are driven by **`params.tag_nav`** in `hugo.toml`. Use those exact strings (or update `hugo.toml` when you introduce new topics).
+
+   Optional: **`notebook_url`** — full GitHub URL to **`notebooks/<slug>.ipynb`** for a reproducibility link in the post header.
 
 3. Write the body in **Markdown**. **Math**: KaTeX is enabled; use `$...$` / `$$...$$` (see `hugo.toml` `passthrough` delimiters).
 
@@ -103,10 +119,10 @@ Your **markdown** here.
 
 ## Adding a Personal post
 
-1. Create Markdown under **`content/personal/`**:
+1. Create a bundle under **`content/personal/<slug>/`**:
 
    ```bash
-   hugo new content personal/my-note.md
+   hugo new content personal/my-note/index.md
    ```
 
 2. Use **`personal_tags`** (not `tags`):

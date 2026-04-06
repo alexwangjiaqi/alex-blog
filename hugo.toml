@@ -14,7 +14,7 @@ disableKinds = ['RSS']
   site_font = 'libre-franklin'
 
 [params.tag_nav]
-  tags = ['Statistical Modeling', 'Machine Learning', 'Finance', 'Projects', 'Misc']
+  tags = ['Statistics', 'Machine Learning', 'Finance', 'Projects', 'Misc']
 
 [params.personal_tag_nav]
   tags = ['Travel', 'Notes', 'Life', 'Reading', 'Misc']

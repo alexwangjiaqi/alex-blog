@@ -4,12 +4,14 @@ date: 2026-04-05
 draft: false
 subtitle: Markdown, links, and a little LaTeX
 tags:
-  - Statistical Modeling
+  - Statistics
   - Machine Learning
   - Misc
 ---
 
 This is a sample **Blog** post. You can use **bold**, _italics_, and [links](https://gohugo.io/).
+
+Co-located figures in this folder can be included with a **relative** path, for example `![descriptive alt](figure.png)` (see README).
 
 Inline math: $x^2 + y^2 = r^2$.
 

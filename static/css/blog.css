@@ -344,6 +344,24 @@ table td {
   font-size: 14px;
 }
 
+/* Optional link to Jupyter notebook (params.notebook_url on posts) */
+.notebook-repro {
+  margin: 0 0 1.25rem;
+  padding: 0 0 0.85rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  font-size: 0.95rem;
+}
+
+.notebook-repro a {
+  color: rgba(0, 0, 0, 0.55);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.notebook-repro a:hover {
+  color: rgba(0, 0, 0, 0.4);
+}
+
 /* Body text — generous vertical rhythm */
 .article {
   font-size: 15px;
@@ -371,6 +389,25 @@ table td {
   padding: 0 1em;
   color: #777;
   border-left: 0.25em solid #ddd;
+}
+
+/* Theorem / definition blocks — reusable across all posts */
+.theorem {
+  margin: 1.5rem 0;
+  padding: 0.6rem 0 0.6rem 1.25rem;
+  border-left: 2.5px solid rgba(0, 0, 0, 0.6);
+}
+
+.theorem p:first-child {
+  margin-top: 0;
+}
+
+.theorem p:last-child {
+  margin-bottom: 0;
+}
+
+.theorem .katex-display {
+  margin: 1.25rem 0;
 }
 
 .article h2 {
