@@ -38,7 +38,7 @@ Before deploying, set **`baseURL`** in `hugo.toml` to your real domain (or hosti
 |------|--------|
 | **`hugo.toml`** | Site title, `baseURL`, taxonomies, permalinks, math (KaTeX), Goldmark (`unsafe` HTML, math passthrough), nav tag lists, **font preset** (`params.site_font`). |
 | **`content/`** | All Markdown pages and posts. |
-| **`layouts/`** | HTML templates: base layout, section lists, tag pages, partials (head, nav, math, intros). |
+| **`layouts/`** | HTML templates: base layout, section lists, tag pages, partials (head, nav, math, intros). **[Shortcodes](https://gohugo.io/content-management/shortcodes/)** in **`layouts/shortcodes/`** (e.g. **`theorem.html`**). |
 | **`static/`** | Static assets copied verbatim; site CSS in `static/css/blog.css`; **global** images/PDFs in `static/img/` and `static/files/` (URLs `/img/...`, `/files/...`). |
 | **`notebooks/`** | Jupyter sources for reproducibility (`<slug>.ipynb` matches `content/blog/<slug>/` or `content/personal/<slug>/`). Not built by Hugo. |
 | **`data/site_fonts.yaml`** | Google Fonts URLs and family names for each `site_font` key. |
@@ -71,7 +71,7 @@ content/
 
 **Global assets** (site-wide, not per post): put files in **`static/img/`** or **`static/files/`** and link as **`/img/...`** or **`/files/...`**.
 
-**Reproducibility:** add **`notebooks/<slug>.ipynb`** (same slug as the post folder). In the post front matter set **`notebook_url`** to the GitHub blob URL for that file; the single-post layout shows a “Notebook on GitHub” line above the article body.
+**Notebook / figures:** add **`notebooks/<slug>.ipynb`** (same slug as the post folder) to keep plotting code with the article. Optional front-matter field **`notebook_url`** can point at the GitHub blob URL for reference; the article body usually links to that notebook from **Sources** (there is no automatic link in the post header).
 
 ---
 
@@ -93,7 +93,7 @@ content/
 
    Topic bars on list/tag pages are driven by **`params.tag_nav`** in `hugo.toml`. Use those exact strings (or update `hugo.toml` when you introduce new topics).
 
-   Optional: **`notebook_url`** — full GitHub URL to **`notebooks/<slug>.ipynb`** for a reproducibility link in the post header.
+   Optional: **`notebook_url`** — full GitHub URL to **`notebooks/<slug>.ipynb`** (for your own reference; link it in the article if you want readers to open the notebook).
 
 3. Write the body in **Markdown**. **Math**: KaTeX is enabled; use `$...$` / `$$...$$` (see `hugo.toml` `passthrough` delimiters).
 
@@ -172,11 +172,32 @@ These control the nav bars on section and listing pages; your post `tags` / `per
 
 - Global rules: **`static/css/blog.css`**.
 
+### Theorem blocks (shortcode)
+
+Statements you want visually distinct (lemmas, definitions in theorem style) can use the **`theorem`** shortcode. It wraps the inner Markdown in a **`div.theorem`**, styled in **`blog.css`** with left padding and a vertical rule so the block reads as a set-apart result.
+
+**Shortcode** (`layouts/shortcodes/theorem.html`):
+
+```
+{{% theorem %}}
+**Theorem (Name).** *Statement in italics if you like.*
+
+$$
+\mathrm{display\ math\ on\ its\ own\ lines}
+$$
+{{% /theorem %}}
+```
+
+**CSS** (`static/css/blog.css`): class **`.theorem`** adds vertical margin, left border, and padding; first/last paragraph margins are tightened; **`.theorem .katex-display`** gets extra vertical spacing for display math.
+
+**Goldmark:** put each **`$$`** delimiter on its own line when display math sits inside the shortcode so the math passthrough extension in `hugo.toml` parses it correctly.
+
 ---
 
 ## Features (summary)
 
 - **KaTeX** for math (`layouts/partials/math.html`, CSS from CDN in head).
+- **Theorem shortcode** for indented statement blocks with a left rule (`layouts/shortcodes/theorem.html`, styles in `static/css/blog.css`).
 - **Chroma**-friendly code blocks (if you enable highlighting in `hugo.toml` later).
 - **RSS** is disabled (`disableKinds = ['RSS']` in `hugo.toml`); remove or adjust if you want a feed.
 

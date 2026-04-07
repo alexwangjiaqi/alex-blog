@@ -4,12 +4,14 @@
   {{- partial "personal-tag-nav.html" (dict "current" .Title) }}
   <div id="posts" class="section">
     {{- range (.Pages.ByDate.Reverse) }}
+    {{- if and .Title (not .Date.IsZero) }}
     <div class="post-row">
       <p class="post-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></p>
       <p class="post-date"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2 January 2006" }}</time></p>
     </div>
     {{- with .Params.subtitle }}
     <p class="post-subtitle">{{ . }}</p>
+    {{- end }}
     {{- end }}
     {{- end }}
   </div>

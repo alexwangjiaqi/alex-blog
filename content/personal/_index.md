@@ -4,4 +4,4 @@ date: 2026-04-05
 draft: false
 ---
 
-Notes on day-to-day life—travel, hobbies, and anything that doesn’t belong in the academic feed.
+“What are you afraid of losing, when nothing in this world belongs to you.” — [Marcus Aurelius](https://en.wikiquote.org/wiki/Marcus_Aurelius)

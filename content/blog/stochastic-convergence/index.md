@@ -221,7 +221,7 @@ The SLLN says that with probability one, the realised running average enters eve
 
 *Figure 8. A single running average $S_n/n$ for i.i.d. $\pm 1$ draws. After the red dashed line, the path remains inside the $\varepsilon$-band permanently.*
 
-## Probability vs. almost sure convergence
+## Convergence in probability vs almost surely
 
 Both notions say that $X_n$ gets close to $X$, but they quantify "getting close" in fundamentally different ways. The cleanest way to see the distinction is through the language of failures.
 

@@ -190,6 +190,59 @@ h1 {
   margin-top: 2rem;
 }
 
+/* About page: drop default .article bottom margin so the footer rule sits right under the copy */
+.about-page .about-body.article {
+  margin-bottom: 0;
+}
+
+/* Full-width rule — match site-header / front-matter dividers */
+.about-page .about-footer .about-footer-rule {
+  display: block;
+  width: 100%;
+  height: 0;
+  margin: 3.25rem 0 1.35rem;
+  padding: 0;
+  border: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  background: transparent;
+}
+
+.about-page .about-footer {
+  clear: both;
+  margin: 0;
+  padding: 0;
+}
+
+.about-page .about-footer .about-footer-socials {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.65;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.about-page .about-footer .about-footer-sep {
+  display: inline-block;
+  padding: 0 0.45em;
+  user-select: none;
+}
+
+.about-body img.about-photo {
+  display: block;
+  width: 280px;
+  max-width: min(280px, 100%);
+  height: auto;
+  margin: 0.75rem auto 1.85rem;
+  border-radius: 3px;
+}
+
+@media screen and (max-width: 480px) {
+  .about-body img.about-photo {
+    width: 240px;
+    max-width: min(240px, 100%);
+    margin-bottom: 1.75rem;
+  }
+}
+
 .home-sections ul {
   list-style: none;
   padding: 0;
@@ -793,7 +846,8 @@ ul#tag-nav li span.tag-current {
 }
 
 hr {
-  border-top: #ccc;
+  border: 0;
+  border-top: 1px solid #ccc;
 }
 
 @media screen and (max-width: 700px) {
