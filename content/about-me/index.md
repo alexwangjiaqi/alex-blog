@@ -4,6 +4,8 @@ layout: about
 draft: false
 ---
 
+{{< figure src="about-photo.jpg" alt="Alexander Wang" class="about-photo" >}}
+
 Hi! I'm **Alexander Wang**. I'm a final-year mathematics student at the University of Cambridge. My degree covers a mix of pure and applied mathematics: I've particularly enjoyed courses in statistics, machine learning, and optimisation, as well as algebra courses such as number fields and Galois theory.
 
 My main research interest is in **interpretable machine learning**, particularly concept-based models that explain their predictions using human-understandable concepts. I spent last summer at the Department of Computer Science at Cambridge working on this with [Prof. Jamnik](https://www.cl.cam.ac.uk/~mj201/) and [Dr Zarlenga](https://www.trinity.ox.ac.uk/people/mateo-espinosa-zarlenga), building new architectures for spatial concept localisation and interactive tools for concept interventions. I think the question of how to make powerful models genuinely transparent is one of the most important open problems in ML, and concept-based approaches are an especially natural angle of attack.

@@ -226,19 +226,28 @@ h1 {
   user-select: none;
 }
 
-.about-body img.about-photo {
+.about-body img.about-photo,
+.about-body figure.about-photo img {
   display: block;
   width: 280px;
   max-width: min(280px, 100%);
   height: auto;
-  margin: 0.75rem auto 1.85rem;
+  margin: 0 auto;
   border-radius: 3px;
 }
 
+.about-body figure.about-photo {
+  margin: 0.75rem auto 1.85rem;
+}
+
 @media screen and (max-width: 480px) {
-  .about-body img.about-photo {
+  .about-body img.about-photo,
+  .about-body figure.about-photo img {
     width: 240px;
     max-width: min(240px, 100%);
+  }
+
+  .about-body figure.about-photo {
     margin-bottom: 1.75rem;
   }
 }
