@@ -6,7 +6,7 @@ draft: false
 
 ## About me
 
-<img src="/img/IMG_8722.jpg" alt="Alexander Wang" class="about-photo" />
+<img src='{{< relurl "img/IMG_8722.jpg" >}}' alt="Alexander Wang" class="about-photo" />
 
 Hi! I'm **Alexander Wang**. I'm a final-year mathematics student at the University of Cambridge. My degree covers a mix of pure and applied mathematics: I've particularly enjoyed courses in statistics, machine learning, and optimisation, as well as algebra courses such as number fields and Galois theory.
 
