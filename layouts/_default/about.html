@@ -1,6 +1,8 @@
 {{ define "main" }}
 <article class="about-page">
   <div class="article about-body">
+    <h2 id="about-me">About me</h2>
+    <img src="{{ relURL "img/IMG_8722.jpg" }}" alt="Alexander Wang" class="about-photo" />
     {{ .Content }}
   </div>
   {{- partial "about-footer.html" . }}
