@@ -143,6 +143,8 @@ $$
 \mathbb{P}(A_n(\varepsilon)) \to 0 \quad \text{as } n \to \infty.
 $$
 
+Note that the "bad" set $A_n(\varepsilon)$ is allowed to change with $n$: the paths that fall outside the $\varepsilon$-band at time $n$ need not be the same paths that fall outside at time $n+1$. All that matters is that the total probability of the bad set shrinks.
+
 Geometrically, this has a clean interpretation. Suppose we simulate $M$ independent copies of the entire experiment, producing $M$ sample paths $X_1(\omega_j), X_2(\omega_j), \ldots$ for $j = 1, \ldots, M$. Plot all $M$ paths on a single figure, draw an $\varepsilon$-band around the target $X$, and then draw a vertical line at time $n$. The cross-section at that vertical line consists of $M$ points, one per path. The proportion of those points that fall outside the $\varepsilon$-band is
 
 $$
