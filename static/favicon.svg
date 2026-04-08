@@ -5,10 +5,12 @@
     ]]></style>
   </defs>
   <text
-    x="16" y="17"
+    transform="translate(16, 16)"
+    x="0"
+    y="0"
     font-family="'Libre Franklin', system-ui, -apple-system, 'Segoe UI', sans-serif"
     font-weight="700"
-    font-size="20"
+    font-size="26"
     text-anchor="middle"
     dominant-baseline="central"
     fill="#000000">a</text>
