@@ -13,7 +13,7 @@
     </div>
     <div class="clear"></div>
   </header>
-  <div class="article" itemprop="articleBody">
+  <div class="article{{- if eq .Section "personal" }} about-body{{- end }}" itemprop="articleBody">
     {{ .Content }}
   </div>
 </article>
