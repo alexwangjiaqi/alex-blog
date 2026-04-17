@@ -13,6 +13,6 @@
     text-anchor="middle"
     dominant-baseline="middle"
     alignment-baseline="middle"
-    dy="-2"
+    dy="-0.5"
     fill="#000000">a</text>
 </svg>
